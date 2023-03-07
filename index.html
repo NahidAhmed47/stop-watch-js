@@ -20,8 +20,53 @@
         </nav>
     </header>
     <main>
-        <section class="border w-full h-24 mt-3 md:mt-8">
-
+        <section class="w-full h-fit mt-3 md:mt-12 grid grid-cols-2">
+            <div class="p-3 md:p-5 border-r w-[85%] ">
+                <div class="flex w-full justify-start gap-2 md:gap-4 text-base md:text-[25px] font-semibold text-[#27AAE1] md:ml-4">
+                    <div class="">
+                        <p>00</p>
+                        <p class="text-xs flex flex-col items-center mt-1">hrs</p>
+                    </div>
+                    <h1>:</h1>
+                    <div>
+                        <p>00</p>
+                        <p class="text-xs flex flex-col items-center mt-1">min</p>
+                    </div>
+                    <h1>:</h1>
+                    <div>
+                        <p>00</p>
+                        <p class="text-xs flex flex-col items-center mt-1">s</p>
+                    </div>
+                </div>
+                <div class="mt-2 md:mt-7">
+                    <div class="flex justify-start w-full gap-2 md:gap-3">
+                        <button class="text-sm md:text-base font-semibold text-white w-14 rounded bg-[#27AAE1] hover:bg-[#D82E2F] hover:scale-[0.95] duration-300">Start</button>
+                        <button class="text-sm md:text-base font-semibold text-white w-14 rounded bg-[#27AAE1] hover:bg-[#D82E2F] hover:scale-[0.95] duration-300">Pause</button>
+                        <button class="text-sm md:text-base font-semibold text-[white] w-14 rounded  bg-[#D82E2F] hover:scale-[0.95] duration-300">Reset</button>
+                    </div>
+                    <button class="text-sm md:text-base font-semibold text-white w-28  md:ml-10 rounded bg-[#27AAE1] mt-2 md:mt-3 hover:bg-[#D82E2F] hover:scale-[0.95] duration-300">Save</button>
+                </div>
+            </div>
+            <!-- After save Display history -->
+            <div class="w-[75%] ">
+                <h1 class="text-center text-xl font-bold text-[#27AAE1] font-serif">Activities</h1>
+                <div class="flex justify-between mt-1 md:mt-2 text-sm font-semibold font-serif text-[#27AAE1]">
+                    <p>No.</p>
+                    <p>Time Count</p>
+                    <p>Title</p>
+                </div>
+                <div class="flex justify-between text-base md:mt-1 text-[#FBB040]">
+                    <p class="text-base font-bold ">1<span>.</span></p>
+                    <div class="flex gap-2 font-medium">
+                        <p>00</p>
+                        <p>:</p>
+                        <p>00</p>
+                        <p>:</p>
+                        <p>00</p>
+                    </div>
+                    <p class="text-base font-medium">Title</p>
+                </div>
+            </div>
         </section>
     </main>
     <script src="js/main.js"></script>
