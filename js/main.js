@@ -53,12 +53,23 @@ document.getElementById('btn-saveTimer').addEventListener('click', () =>{
     const eventTimer = allTime.join(':');
     const containerUl = document.getElementById('display-container-ul');
     const li = document.createElement('li');
+    li.classList.add('item', 'mt-2');
     li.innerHTML = `
-                <div class="ml-12 flex justify-between">
-                    <h1>${eventTimer}</h1>
-                    <p>${titleInput}</p>
+                <div class="w-full flex justify-between">
+                    <div class="flex justify-around w-full">
+                         <h1>${eventTimer}</h1>
+                         <p>${titleInput}</p>
+                    </div>
+                    <img class="w-6 hover:scale-90 duration-300" src="./images/circle-xmark-regular.svg"/>
                 </div>
     `;
     containerUl.appendChild(li);
     watchReset();
+    
+})
+document.getElementById('display-container-ul').addEventListener('click', (e) =>{
+    if(e.target.tagName === 'IMG'){
+        const displayLi = e.target.parentNode.parentNode;
+        displayLi.style.display = 'none';
+    }
 })
