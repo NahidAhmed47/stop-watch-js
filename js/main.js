@@ -1,11 +1,10 @@
 let [milliseconds,seconds, minutes, hours] = [0,0,0,0];
 const displayTime = document.getElementById('display-time');
-const watchStartBtn = document.getElementById('watch-start');
 let timer = null;
 const stopWatch = () =>{
-    /* milliseconds += 10;
+    milliseconds += 125;
     if(milliseconds === 1000){
-        milliseconds = 0; */
+        milliseconds = 0;
         seconds++;
         if(seconds === 60){
             seconds = 0;
@@ -15,26 +14,32 @@ const stopWatch = () =>{
                 hours++;
             }
         }
-    // }
-    const milliSeconds = milliseconds % 10;
-    displayTime.innerHTML = `${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}:${milliseconds < 100 ? milliseconds : milliSeconds}` 
+    }
+    const milliSeconds = Math.round(milliseconds / 10);
+    displayTime.innerHTML = `${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}:${milliseconds < 100 ? '0'+milliseconds : milliSeconds}` 
 }
 const watchStart = () =>{
     if(timer !== null){
         clearInterval(timer);
     }
-    timer = setInterval(stopWatch, 1000);
+    timer = setInterval(stopWatch, 125);
 }
 const watchPause = () =>{
     clearInterval(timer);
-    watchStartBtn.innerText = "Go on"
 }
 const watchReset = () =>{
     clearInterval(timer);
     [milliseconds,seconds, minutes, hours] = [0,0,0,0];
     displayTime.innerHTML = "00:00:00";
 }
-watchStartBtn.addEventListener('click', () =>{
-    watchStartBtn.innerText = "Start";
-    watchStart();
+document.getElementById('watch-pause').addEventListener('click', () =>{
+    const btnPause = document.getElementById('watch-pause');
+    if(btnPause.innerText !== "Go on"){
+        watchPause();
+        btnPause.innerText = "Go on";
+    }
+    else{
+        watchStart()
+        btnPause.innerText = "Pause";
+    }
 })
