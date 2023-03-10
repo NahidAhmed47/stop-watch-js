@@ -48,13 +48,15 @@ document.getElementById('btn-saveTimer').addEventListener('click', () =>{
     if(titleInput === '' || titleInput === null){
         titleInput = 'No title';
     }
-    const eventTimer = displayTime.innerText;
+    const allTime = displayTime.innerText.split(':');
+    allTime.pop();
+    const eventTimer = allTime.join(':');
     const containerUl = document.getElementById('display-container-ul');
     const li = document.createElement('li');
     li.innerHTML = `
-                <div class="ml-10 flex justify-between">
+                <div class="ml-12 flex justify-between">
                     <h1>${eventTimer}</h1>
-                    <p class="">${titleInput}</p>
+                    <p>${titleInput}</p>
                 </div>
     `;
     containerUl.appendChild(li);
