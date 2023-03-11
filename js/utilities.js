@@ -27,7 +27,7 @@ const watchPause = () =>{
 const watchReset = () =>{
     clearInterval(timer);
     [milliseconds, seconds, minutes, hours] = [0,0,0,0];
-    displayTime.innerHTML = "00:00:00";
+    displayTime.innerHTML = "00:00:00:00";
 }
 const getSavedItemsFromLocalStorage = () =>{
     let countTimer = {};
@@ -38,16 +38,16 @@ const getSavedItemsFromLocalStorage = () =>{
     return countTimer;
 }
 const displayTimerData = (timer, titleInput)=>{
-    const allTime = timer.split(':');
+    /* const allTime = timer.split(':');
     allTime.pop();
-    const eventTimer = allTime.join(':');
+    const eventTimer = allTime.join(':'); */
     const containerUl = document.getElementById('display-container-ul');
     const li = document.createElement('li');
     li.classList.add('item', 'mt-2');
     li.innerHTML = `
                 <div class="w-full flex justify-between">
                     <div class="flex justify-around w-full">
-                         <h1>${eventTimer}</h1>
+                         <h1>${timer}</h1>
                          <p>${titleInput}</p>
                     </div>
                     <img class="w-6 hover:scale-90 duration-300" src="./images/circle-xmark-regular.svg"/>
