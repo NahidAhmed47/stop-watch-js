@@ -19,24 +19,26 @@ document.getElementById('btn-saveTimer').addEventListener('click', () =>{
     }
     const timer = displayTime.innerText;
     displayTimerData(timer, titleInput);
-    watchReset();
     saveTimerToLocalStorage(timer, titleInput);
 })
 document.getElementById('display-container-ul').addEventListener('click', (e) =>{
     if(e.target.tagName === 'IMG'){
         const propertyName = e.target.parentNode.parentNode.children[0].children[0].children[0].innerText;
         const savedItems = getSavedItemsFromLocalStorage();
-        console.log(Object.keys(savedItems).length);
         for(const item in savedItems){
             const value = savedItems[item];
-            if(item === propertyName){
+            if(Object.keys(savedItems).length === 2 && item !== propertyName){
+                const keys = Object.keys(savedItems);
+                const lastKey = keys[keys.length - 1];
+                delete savedItems[lastKey];
+                saveNewCountTimerToStorage(savedItems);
+            }
+            else if(item === propertyName){
                 delete savedItems[item];
             }
             else{
                 savedItems[item] = value;
-                const countTimerStringified = JSON.stringify(savedItems);
-                localStorage.setItem('countTimer', countTimerStringified);
-                console.log(item,value);
+                saveNewCountTimerToStorage(savedItems);
             }
         }
         if(Object.keys(savedItems).length === 0){

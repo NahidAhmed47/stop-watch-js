@@ -55,3 +55,7 @@ const displayTimerData = (timer, titleInput)=>{
     `;
     containerUl.appendChild(li);
 }
+const saveNewCountTimerToStorage = (savedItems) =>{
+    const countTimerStringified = JSON.stringify(savedItems);
+    localStorage.setItem('countTimer', countTimerStringified);
+}
